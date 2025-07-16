@@ -6,6 +6,7 @@
 body {
     background-color: vars.$first-color;
     color: vars.$second-color;
+    padding: 0px 80px;
     .button {
         @include mixins.Poppins(14px, 500, 20px);
         background-color: vars.$third-color;
