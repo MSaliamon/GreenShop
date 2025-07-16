@@ -1,0 +1,11 @@
+@use '../../scss/mixins';
+@use '../../scss/vars';
+@use '../../scss/reset';
+
+.header {
+    @include mixins.Flex(row, space-around, center, 0px);
+    padding: 20px 0px;
+    &-container {
+        @include mixins.Flex(row, center, center, 20px);
+    }
+}
