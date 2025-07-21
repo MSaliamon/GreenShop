@@ -1,0 +1,60 @@
+@use '../../../scss/mixins';
+@use '../../../scss/vars';
+@use '../../../scss/reset';
+
+.section2 {
+    @include mixins.Flex(row, center, flex-start, 74px);
+    &-container1 {
+        @include mixins.Flex(column, center, flex-start, 36px);
+        .section2-box1 {
+            @include mixins.Flex(column, center, flex-start, 7px);
+            &__title {
+                @include mixins.Poppins(18px, 600, 16px);
+            }
+            &__list {
+                @include mixins.Flex(column, center, flex-start, 7px);
+            }
+            &__link {
+                @include mixins.Poppins(15px, 400, 30px);
+                color: vars.$second-color;
+            }
+        }
+        .section2-box2 {
+            @include mixins.Flex(column, center, flex-start, 20px);
+            &__text {
+                @include mixins.Poppins(18px, 600, 16px);
+            }
+            &__cont {
+                @include mixins.Flex(column, center, flex-start, 16px);
+                &-input {
+                    fill: vars.$third-color;
+                }
+            }
+        }
+    }
+    &-container2 {
+        @include mixins.Flex(column, center, flex-start, 69px);
+        &__list {
+            @include mixins.Flex(row, center, center, 37px);
+        }
+        &__link {
+            @include mixins.Poppins(15px, 400, 16px);
+            color: vars.$second-color;
+        }
+        &__box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 41px;
+            .card {
+                @include mixins.Flex(column, center,flex-start, 19px);
+                &__title {
+                    @include mixins.Poppins(16px, 400, 16px);
+                }
+                &__price {
+                    @include mixins.Poppins(18px, 500, 16px);
+                    color: vars.$third-color;
+                }
+            }
+        }
+    }
+}
