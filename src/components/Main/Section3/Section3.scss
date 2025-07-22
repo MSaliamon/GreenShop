@@ -1,0 +1,22 @@
+@use '../../../scss/mixins';
+@use '../../../scss/vars';
+@use '../../../scss/reset';
+
+.section3 {
+    @include mixins.Flex(row, center, center, 28px);
+    &-container {
+        @include mixins.Flex(row, center, center, 10px);
+        &__box {
+            @include mixins.Flex(column, center, flex-end, 15px);
+            &-text1 {
+                @include mixins.Poppins(18px, 700, 24px);
+                width: 30%;
+            }
+            &-text2 {
+                @include mixins.Poppins(14px, 400, 24px);
+                width: 75%;
+                text-align: end;
+            }
+        }
+    }
+}

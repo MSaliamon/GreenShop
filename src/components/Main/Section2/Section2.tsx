@@ -33,24 +33,18 @@ const Section2: React.FC = () => {
     e.preventDefault();
     setTopFilter(filter);
     setSelectedCategory(null);
-    setPriceRange(1230); // Скидаємо ціну до максимального
+    setPriceRange(1230);
     setCurrentPage(1);
   };
-
-  // Фільтрація карток
   let filteredCards = cardData.filter((item) => item.price <= priceRange);
-
   if (topFilter === 'new') {
     filteredCards = filteredCards.slice(0, 4);
   } else if (topFilter === 'sale') {
     filteredCards = filteredCards.filter((item) => item.sale === true);
   }
-
   if (selectedCategory) {
     filteredCards = filteredCards.filter((item) => item.category === selectedCategory);
   }
-
-  // Пагінація: лише якщо topFilter !== 'all'
   let currentCards = filteredCards;
   const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
   if (topFilter !== 'all' || selectedCategory) {
@@ -148,8 +142,6 @@ const Section2: React.FC = () => {
             <p>No cards available for the selected filter.</p>
           )}
         </div>
-
-        {/* Пагінація тільки для категорій та New/Sale */}
         {(topFilter !== 'all' || selectedCategory) && totalPages > 1 && (
           <div className="section2-container2__pagination">
             {Array.from({ length: totalPages }, (_, i) => (
