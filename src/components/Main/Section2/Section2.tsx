@@ -5,28 +5,21 @@ import cardData from '../../../data/Card';
 const Section2: React.FC = () => {
   const [priceRange, setPriceRange] = useState(1230);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
   const [topFilter, setTopFilter] = useState<'all' | 'new' | 'sale'>('all');
-  const cardsPerPage = 2;
 
   useEffect(() => {
-    console.log('Render triggered - State:', { topFilter, selectedCategory, currentPage, priceRange });
-  }, [topFilter, selectedCategory, currentPage, priceRange]);
+    console.log('Render triggered - State:', { topFilter, selectedCategory, priceRange });
+  }, [topFilter, selectedCategory, priceRange]);
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value);
     setPriceRange(value);
   };
 
-  const handleFilter = () => {
-    setCurrentPage(1);
-  };
-
   const handleCategoryClick = (e: React.MouseEvent<HTMLAnchorElement>, category: string) => {
     e.preventDefault();
     setSelectedCategory(category);
     setTopFilter('all');
-    setCurrentPage(1);
   };
 
   const handleTopFilterClick = (e: React.MouseEvent<HTMLAnchorElement>, filter: 'all' | 'new' | 'sale') => {
@@ -34,8 +27,8 @@ const Section2: React.FC = () => {
     setTopFilter(filter);
     setSelectedCategory(null);
     setPriceRange(1230);
-    setCurrentPage(1);
   };
+
   let filteredCards = cardData.filter((item) => item.price <= priceRange);
   if (topFilter === 'new') {
     filteredCards = filteredCards.slice(0, 4);
@@ -46,16 +39,6 @@ const Section2: React.FC = () => {
     filteredCards = filteredCards.filter((item) => item.category === selectedCategory);
   }
   let currentCards = filteredCards;
-  const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
-  if (topFilter !== 'all' || selectedCategory) {
-    const indexOfLastCard = currentPage * cardsPerPage;
-    const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-    currentCards = filteredCards.slice(indexOfFirstCard, indexOfLastCard);
-  }
-
-  const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
 
   return (
     <section className="section2">
@@ -90,7 +73,7 @@ const Section2: React.FC = () => {
             <p className="section2-box2__cont-price">
               Price: <span className="section2-box2__cont-price--span">$39 - ${priceRange}</span>
             </p>
-            <button className="section2-box2__cont-btn button" onClick={handleFilter}>
+            <button className="section2-box2__cont-btn button">
               Filter
             </button>
           </div>
@@ -142,20 +125,6 @@ const Section2: React.FC = () => {
             <p>No cards available for the selected filter.</p>
           )}
         </div>
-        {(topFilter !== 'all' || selectedCategory) && totalPages > 1 && (
-          <div className="section2-container2__pagination">
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i + 1}
-                onClick={() => paginate(i + 1)}
-                className="section2-container2__pagination-button"
-                disabled={currentPage === i + 1}
-              >
-                {i + 1}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );

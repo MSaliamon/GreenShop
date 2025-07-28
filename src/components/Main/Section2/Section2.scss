@@ -3,7 +3,8 @@
 @use '../../../scss/reset';
 
 .section2 {
-    @include mixins.Flex(row, center, flex-start, 74px);
+    @include mixins.Flex(row, space-evenly, flex-start, 0px);
+    width: 100%;
     &-container1 {
         @include mixins.Flex(column, center, flex-start, 36px);
         .section2-box1 {

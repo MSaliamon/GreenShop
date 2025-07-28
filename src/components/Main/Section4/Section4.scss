@@ -1,0 +1,34 @@
+@use '../../../scss/mixins';
+@use '../../../scss/vars';
+@use '../../../scss/reset';
+
+.section4 {
+    @include mixins.Flex(column, center, center, 35px);
+    &-textbox {
+        @include mixins.Flex(column, center, center, 15px);
+        &__title {
+            @include mixins.Poppins(30px, 700, 16px);
+        }
+        &__text {
+            @include mixins.Poppins(14px, 400, 24px);
+        }
+    }
+    &-container {
+        @include mixins.Flex(row, center, center, 44px);
+        .section4-card {
+            @include mixins.Flex(column, center, flex-start, 5px);
+            &__sub-title {
+                @include mixins.Poppins(14px, 500, 16px);
+                color: vars.$third-color;
+            }
+            &__title {
+                @include mixins.Poppins(20px, 700, 28px);
+                width: 70%;
+            }
+            &__text {
+                @include mixins.Poppins(14px, 400, 24px);
+                width: 80%;
+            }
+        }
+    }
+}
