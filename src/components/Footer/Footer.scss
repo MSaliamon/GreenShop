@@ -1,0 +1,69 @@
+@use '../../scss/mixins';
+@use '../../scss/vars';
+@use '../../scss/reset';
+
+.footer {
+    @include mixins.Flex(column, center, flex-start, 23px);
+    background-color: vars.$footer-color;
+    padding: 25px 23px;
+    margin-top: 100px;
+    &-container1 {
+        @include mixins.Flex(row, center, center, 62px);
+        .footer-box {
+            @include mixins.Flex(column, center, flex-start, 7px);
+            &__name {
+                @include mixins.Poppins(18px, 600, 16px);
+            }
+            &__text {
+                @include mixins.Poppins(14px, 400, 22px);
+            }
+        }
+        .footer-box1 {
+            @include mixins.Flex(column, center, flex-start, 17px);
+            &__text {
+                @include mixins.Poppins(18px, 700, 16px);
+            }
+            &__text2 {
+                @include mixins.Poppins(14px, 400, 22px);
+            }
+        }
+    }
+    &-container2 {
+        @include mixins.Flex(row, center, center, 60px);
+        .footer-box {
+            @include mixins.Flex(row, center, center, 7px);
+            &__text {
+                @include mixins.Poppins(14px, 400, 22px);
+                color: vars.$second-color;
+            }
+        }
+    }
+    &-container3 {
+        @include mixins.Flex(row, center, flex-start, 166px);
+        .footer-list {
+            @include mixins.Flex(column, flex-start, flex-start, 20px);
+            &__text {
+                @include mixins.Poppins(18px, 700, 16px);
+            }
+            &__link {
+                @include mixins.Poppins(14px, 400, 22px);
+                color: vars.$second-color;
+            }
+        }
+        .footer-box {
+            @include mixins.Flex(column, center, flex-start, 27px);
+            &__text {
+                @include mixins.Poppins(18px, 700, 16px);
+            }
+            &__socials {
+                @include mixins.Flex(row, center, center, 7px);
+            }
+        }
+    }
+    &-container4 {
+       &__text {
+        @include mixins.Poppins(14px, 400, 22px);
+        margin-left: 500px;
+       }
+    }
+}
