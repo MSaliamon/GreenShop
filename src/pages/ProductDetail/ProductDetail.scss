@@ -1,0 +1,10 @@
+@use '../../scss/mixins';
+@use '../../scss/vars';
+@use '../../scss/reset';
+
+.product-detail {
+    @include mixins.Flex(column, center, center, 30px);
+    &__text {
+        width: 50%;
+    }
+}

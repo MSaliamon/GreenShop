@@ -1,9 +1,10 @@
 import './Section2.scss';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import cardData from '../../../data/Card';
 
 const Section2: React.FC = () => {
-  const [priceRange, setPriceRange] = useState(1230);
+  const [priceRange, setPriceRange] = useState(200);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [topFilter, setTopFilter] = useState<'all' | 'new' | 'sale'>('all');
 
@@ -26,7 +27,7 @@ const Section2: React.FC = () => {
     e.preventDefault();
     setTopFilter(filter);
     setSelectedCategory(null);
-    setPriceRange(1230);
+    setPriceRange(200);
   };
 
   let filteredCards = cardData.filter((item) => item.price <= priceRange);
@@ -65,7 +66,7 @@ const Section2: React.FC = () => {
             <input
               type="range"
               min="39"
-              max="1230"
+              max="200"
               value={priceRange}
               onChange={handlePriceChange}
               className="section2-box2__cont-input"
@@ -73,9 +74,6 @@ const Section2: React.FC = () => {
             <p className="section2-box2__cont-price">
               Price: <span className="section2-box2__cont-price--span">$39 - ${priceRange}</span>
             </p>
-            <button className="section2-box2__cont-btn button">
-              Filter
-            </button>
           </div>
         </div>
       </div>
@@ -114,12 +112,11 @@ const Section2: React.FC = () => {
         <div className="section2-container2__box">
           {currentCards.length > 0 ? (
             currentCards.map((item) => (
-              <div key={item.id} className="card">
+              <Link to={`/product/${item.id}`} key={item.id} className="card">
                 <img src={item.image} alt={item.title} />
                 <h3 className="card__title">{item.title}</h3>
                 <p className="card__price">${item.price}</p>
-                <button className="card__btn button">Add to Cart</button>
-              </div>
+              </Link>
             ))
           ) : (
             <p>No cards available for the selected filter.</p>
@@ -131,3 +128,4 @@ const Section2: React.FC = () => {
 };
 
 export default Section2;
+
