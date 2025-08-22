@@ -1,0 +1,26 @@
+@use '../../scss/mixins';
+@use '../../scss/vars';
+@use '../../scss/reset';
+
+.form {
+    @include mixins.Flex(column, center, center, 20px);
+    &__title {
+        @include mixins.Poppins(30px, 700, 16px);
+        margin: 40px 0;
+    }
+    &__input {
+        border: 2px solid vars.$border-color;
+        width: 20%;
+    }
+    &__error {
+        @include mixins.Poppins(14px, 500, 20px);
+        color: vars.$error-color;
+    }
+    &__btn {
+        @include mixins.Poppins(14px, 500, 20px);
+        background-color: vars.$third-color;
+        color: vars.$first-color;
+        padding: 8px 17px;
+        border-radius: 10px;
+    }
+}

@@ -7,5 +7,10 @@
     padding: 20px 0px;
     &-container {
         @include mixins.Flex(row, center, center, 20px);
+        &__btn {
+            &-link {
+                color: vars.$first-color;
+            }
+        }
     }
 }
